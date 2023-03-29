@@ -6,6 +6,7 @@ const teamRoute = express.Router();
 
 const teamController = new TeamController(new TeamService());
 
+teamRoute.get('/:id', teamController.findByPk);
 teamRoute.get('/', teamController.findAll);
 
 export default teamRoute;
