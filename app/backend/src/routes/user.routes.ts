@@ -8,7 +8,7 @@ const userRoute = express.Router();
 
 const userController = new UserController(new UserService());
 
-userRoute.get('/validate', authorizationMiddleware, userController.findingRole);
+userRoute.get('/role', authorizationMiddleware, userController.findingRole);
 userRoute.post('/', loginValidation, userController.login);
 
 export default userRoute;
