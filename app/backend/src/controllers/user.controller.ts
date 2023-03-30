@@ -4,13 +4,16 @@ import IUserService from '../interfaces/IUserService';
 export default class UserController {
   constructor(private _userService: IUserService) {}
 
-  login: RequestHandler = async (req, res, next) => {
-    try {
-      const token = await this._userService.login(req.body);
-      return res.status(200).json({ token });
-    } catch (error) {
-      next(error);
+  login: RequestHandler = async (req, res) => {
+    // try {
+    const token = await this._userService.login(req.body);
+    if (!token) {
+      return res.status(401).json({ message: 'Invalid email or password' });
     }
+    return res.status(200).json({ token });
+    // } catch (error) {
+    // next(error);
+    // }
   };
 
   findingRole: RequestHandler = async (req, res, next) => {
