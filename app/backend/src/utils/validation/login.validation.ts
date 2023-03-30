@@ -3,9 +3,7 @@ import ILogin from '../../interfaces/ILogin';
 
 const loginSchema = Joi.object({
   email: Joi.string().email().required(),
-  password: Joi.string().min(7).required().messages({
-    'string.min': '"password" length must be at least 7 characters long',
-  }),
+  password: Joi.string().min(6).required(),
 });
 
 const loginFieldsValidation = (body: ILogin) => {
