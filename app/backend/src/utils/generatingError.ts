@@ -1,4 +1,4 @@
-class generatingError extends Error {
+class GeneratingError extends Error {
   status: number;
   message: string;
 
@@ -9,4 +9,4 @@ class generatingError extends Error {
   }
 }
 
-export default generatingError;
+export default GeneratingError;
