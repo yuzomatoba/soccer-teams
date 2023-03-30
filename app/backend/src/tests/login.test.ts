@@ -23,7 +23,9 @@ describe('Verifica a rota /login', () => {
  afterEach(function() {sinon.restore() });
 
  describe('Verificando o POST, em /login', () => {
+
   it('Se o usuário faz login com sucesso', async () => {
+
     sinon.stub(User, "findOne").resolves(userMock as unknown as User);
     sinon.stub(jsonwebtoken, 'sign').resolves(token);
 
@@ -37,6 +39,7 @@ describe('Verifica a rota /login', () => {
   });
 
   it('O usuário não informou o email', async () => {
+
     const response = await chai.request(app).post('/login').send({
       password: 'secret_admin'
     });
@@ -46,6 +49,7 @@ describe('Verifica a rota /login', () => {
   });
 
   it('O usuário não informou o password', async () => {
+
     const response = await chai.request(app).post('/login').send({
       email: 'admin@admin.com'
     });
@@ -55,6 +59,7 @@ describe('Verifica a rota /login', () => {
   });
 
   it('O email informado não é válido', async () => {
+
     const response = await chai.request(app).post('/login').send({
       email: 'admin@wrong.com',
       password: 'secret_admin'
@@ -65,6 +70,7 @@ describe('Verifica a rota /login', () => {
   });
 
   it('A senha informada não é válida', async () => {
+    
     const response = await chai.request(app).post('/login').send({
       email: 'admin@admin',
       password: 'password'

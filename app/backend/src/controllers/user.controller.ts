@@ -15,7 +15,7 @@ export default class UserController {
 
   findingRole: RequestHandler = async (req, res, next) => {
     try {
-      const role = await this._userService.findingRole(req.body.email);
+      const role = await this._userService.findingRole(req.body.user.email);
       return res.status(200).json(role);
     } catch (error) {
       next(error);
