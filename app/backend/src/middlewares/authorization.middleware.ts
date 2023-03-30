@@ -11,7 +11,7 @@ const authorizationMiddleware: RequestHandler = async (req, res, next) => {
     req.body.user = user;
     next();
   } catch (error) {
-    return res.status(401).json({ message: 'Toekn must be a valid valid token' });
+    return res.status(401).json({ message: 'Token must be a valid valid token' });
   }
 };
 
