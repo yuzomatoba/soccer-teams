@@ -12,7 +12,7 @@ RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
     req.body.user = user;
     next();
   } catch (error) {
-    return res.status(401).json({ message: 'Token must be a valid valid token' });
+    return res.status(401).json({ message: 'Token must be a valid token' });
   }
 };
 
