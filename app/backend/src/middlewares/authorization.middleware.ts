@@ -1,7 +1,8 @@
+import { Request, Response, NextFunction, RequestHandler } from 'express';
 import * as jwt from 'jsonwebtoken';
-import { RequestHandler } from 'express';
 
-const authorizationMiddleware: RequestHandler = async (req, res, next) => {
+const authorizationMiddleware:
+RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   const { authorization } = req.headers;
 
   if (!authorization) return res.status(401).json({ message: 'Token not found' });
