@@ -7,6 +7,7 @@ const matchRoute = express.Router();
 
 const matchController = new MatchController(new MatchService());
 
+matchRoute.post('/', authorizationMiddleware, matchController.newMatch);
 matchRoute.get('/', matchController.findAll);
 matchRoute.patch('/:id/finish', authorizationMiddleware, matchController.endMatch);
 matchRoute.patch('/:id', authorizationMiddleware, matchController.matchInProgress);

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { MatchGoals } from '../interfaces/IMatchService';
+import IMatch from '../interfaces/IMatch';
 import { IMatchController } from '../interfaces/IMatchController';
 import MatchService from '../services/match.service';
 
@@ -25,5 +26,12 @@ export default class MatchController implements IMatchController {
 
     const endedMatch = await this._matchService.matchInProgress(+id, matchGoals);
     return res.status(200).json({ message: endedMatch });
+  };
+
+  newMatch = async (req: Request, res: Response): Promise<Response | void> => {
+    const match = req.body as IMatch;
+
+    const newMatchStarts = await this._matchService.newMatch(match);
+    return res.status(201).json(newMatchStarts);
   };
 }

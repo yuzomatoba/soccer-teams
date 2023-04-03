@@ -36,4 +36,11 @@ export default class MatchService implements IMatchService {
     );
     return 'Ended Match';
   };
+
+  newMatch = async (match: IMatch): Promise<IMatch> => {
+    const newMatchStarts: IMatch = await this._matchmodel.create({
+      ...match, inProgress: true,
+    });
+    return newMatchStarts;
+  };
 }
