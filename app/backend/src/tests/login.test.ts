@@ -10,6 +10,7 @@ import token from './mocks/token.mock';
 import { Response } from 'superagent';
 import * as jsonwebtoken from 'jsonwebtoken';
 import userMock from './mocks/user.mock';
+import authorizationMiddleware from '../middlewares/authorization.middleware';
 
 chai.use(chaiHttp);
 
@@ -78,6 +79,33 @@ describe('Verifica a rota /login', () => {
 
     expect(response.status).to.be.equal(401);
     expect(response.body).to.be.deep.equal({ message: 'Invalid email or password' });
+  });
+  it('Verifica se o email não existe no database', async () => {
+    sinon.stub(User, 'findOne').resolves(null);
+
+    const response = await chai.request(app).post('/login').send({
+      email: '',
+      password: 'papapapapapa',
+    });
+    expect(response.status).to.be.equal(401);
+    expect(response.body).to.be.deep.equal({ message: 'Invalid email or password'});
+  });
+  it('Verifica se token não é fornecido', async () => {
+    const response = await chai.request(app).get('/role').set({
+      authorization: 'Authorization',
+      invalidToken :'1nv4l1d_t0k3n',
+    });
+
+    expect(response.status).to.be.equal(401);
+    expect(response.body).to.be.deep.equal({ message: 'Token must be a valid token'});
+  })
+  it('Verifica se o token é fornecido corretamente', async () => {
+    const response = await chai.request(app).get('/role').set({
+      authorization: 'Authorization',
+      validToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInBhc3N3b3JkIjoic2VjcmV0X2FkbWluIiwiaWF0IjoxNjgwMDkzNTQ0fQ.xgv5Ti3AcN8oRtjoOp9SnIWAPrQapPa4Lamy81ri6Lk',
+    });
+    expect(response.status).to.be.equal(200);
+    expect(response.body).to.be.deep.equal({ role: 'admin' });
   });
  });
 });

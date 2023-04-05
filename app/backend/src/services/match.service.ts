@@ -44,19 +44,16 @@ export default class MatchService implements IMatchService {
     }
   };
 
-  teamAlreadyExists = async (homeId: number, awayId: number): Promise<void> => {
+  teamAlreadyExists = async (homeId: number, awayId: number): Promise<string> => {
     const promiseTeam = [homeId, awayId].map(async (id) => this._matchmodel.findByPk(id));
     const teams = await Promise.all(promiseTeam);
 
     if (teams.some((element) => !element)) {
-      throw new GeneratingError(404, 'Invalid email or passwordThere is no team with such id!');
-    }
+      return 'There is no team with such id!';
+    } return '';
   };
 
   newMatch = async (match: IMatch): Promise<IMatch> => {
-    await this.sameTeam(match.homeTeamId, match.awayTeamId);
-    await this.teamAlreadyExists(match.homeTeamId, match.awayTeamId);
-
     const newMatchStarts: IMatch = await this._matchmodel.create({
       ...match, inProgress: true,
     });
