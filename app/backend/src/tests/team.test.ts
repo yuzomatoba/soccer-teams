@@ -41,5 +41,12 @@ describe('Verifica a rota /teams', () => {
     expect(response.status).to.be.equal(200);
     expect(response.body).to.be.deep.equal(teamMock[0]);
   });
+  
+  it('Verifica que o time não existe', async () => {
+    const response = await chai.request(app).get('/teams/999');
+
+    expect(response.status).to.be.equal(404);
+    expect(response.body).to.be.deep.equal({ message: 'There is no team with such id!'})
+  });
  });
 });

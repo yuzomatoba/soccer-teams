@@ -24,6 +24,7 @@ describe('Verifica a rota /matches', () => {
   afterEach(function() { sinon.restore() });
 
   describe('Verificando o método GET, na rota /matches', () => {
+
 it('Os dados de todas as partidas são obtidas', async () => {
   sinon.stub(Match, "findAll").resolves(matchMock as unknown as Match[]);
 
@@ -33,7 +34,9 @@ it('Os dados de todas as partidas são obtidas', async () => {
   expect(response.body).to.be.deep.equal(matchMock);
 });
   });
+
 describe('Verifica se o GET da rota /matches?inProgress=true', () => {
+
 it('Se retorna todas as partidas que estão em progresso', async () => {
  const matchesInProgress = matchMock.filter((match) => match.inProgress === true);
 
@@ -58,6 +61,7 @@ it('Obtém todas as partidas finalizadas', async () => {
 });
 
 describe('Verifica através do método PATCH a rota /:id', () => {
+
 it('Se é possível atualizar gols de uma partida', async () => {
   sinon.stub(Match, "update").resolves();
 
@@ -67,10 +71,12 @@ it('Se é possível atualizar gols de uma partida', async () => {
   });
 
   expect(response.status).to.be.equal(200);
-  expect(response.body).to.be.deep.equal({ message: 'Match is updates!' });
+  expect(response.body).to.be.deep.equal({ message: 'Match is updated!' });
 });
 });
+
 describe('Verifica o método PATCH, utilizando /:id/finish', () => {
+
 it('E atualiza partida como finalizada', async () => {
   sinon.stub(Match, "update").resolves();
 
@@ -82,6 +88,7 @@ it('E atualiza partida como finalizada', async () => {
 });
 
 describe('Verifica o método POST, rota /matches', () => {
+
 it('Se insere uma nova partida', async () => {
   const result = {
     id: 22,
@@ -104,11 +111,25 @@ it('Se insere uma nova partida', async () => {
     homeTeamGoals: 3,
     awayTeamGoals: 3,
   })
-  .set('authorization', '');
+  .set('authorization', 'ouououououou');
 
-  expect(response.status).to.be.equal(401);
-  expect(response.body).to.be.deep.equal({ message: 'Token not found' });
+  expect(response.status).to.be.equal(201);
+  expect(response.body).to.be.deep.equal(result);
 });
+
+it('Verifica que partida não pode ser inserida sem um token válido', async () =>{
+sinon.stub(jsonwebtoken, 'verify').resolves();
+const response = await chai.request(app).post('/matches').send({
+  homeTeam: 18,
+  awayTeam: 5,
+  homeTeamGoals: 3,
+  awayTeamGoals: 3,
+})
+.set('authorization', '');
+
+expect(response.status).to.be.equal(401);
+expect(response.body).to.be.deep.equal({message: 'Token not found' });
+}); 
 
 it('Partida não pode ser iniciada sem o token válido', async () => {
 sinon.stub(jsonwebtoken, 'verify').throws();
@@ -124,6 +145,7 @@ const response = await chai.request(app).post('/matches').send({
 expect(response.status).to.be.equal(401);
 expect(response.body).to.be.deep.equal({ message: 'Token must be a valid token' });
 });
+
 it('Times iguais não podem ser inseridos', async () => {
   sinon.stub(jsonwebtoken, 'verify').resolves({ email: 'admin@admin.com', password: 'secret_admin' });
 
@@ -139,12 +161,14 @@ it('Times iguais não podem ser inseridos', async () => {
   expect(response.body).to.be.deep.equal({ message: 'It is not possible to create a match with two equal teams' });
 });
 });
+
 it('Verifica quando a partida não existe', async () => {
   response = await chai.request(app).get('/matches/447');
 
   expect(response.status).to.be.equal(404);
   expect(response.body).to.be.deep.equal({ message: 'Match not found'});
 });
+
 it('Verifica se uma nova partida é solicitada pelo PATCH', async () => {
   response = await chai.request(app).patch('/matches/41/finish');
 

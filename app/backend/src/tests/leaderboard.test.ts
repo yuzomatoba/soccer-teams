@@ -47,7 +47,7 @@ sinon.stub(Match, 'findAll').resolves(leaderboardHomeMock as [unknown[], any]);
 sinon.restore()
 sinon.stub(Match, 'findAll').resolves(leaderboardAwayMock as [unknown[], any]);
 
-const response = await chai.request(app).get('/leaderboar');
+const response = await chai.request(app).get('/leaderboard');
 
 expect(response.status).to.be.equal(200);
 });

@@ -17,7 +17,6 @@ export default class UserService implements IUserService {
     }
     const token = undefined;
     return token;
-    // throw new GeneratingError(401, 'Invalid email or password');
   };
 
   findingRole = async (email: string): Promise<{ role: string } | void> => {

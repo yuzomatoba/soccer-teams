@@ -10,7 +10,6 @@ import token from './mocks/token.mock';
 import { Response } from 'superagent';
 import * as jsonwebtoken from 'jsonwebtoken';
 import userMock from './mocks/user.mock';
-import authorizationMiddleware from '../middlewares/authorization.middleware';
 
 chai.use(chaiHttp);
 
@@ -90,9 +89,10 @@ describe('Verifica a rota /login', () => {
     expect(response.status).to.be.equal(401);
     expect(response.body).to.be.deep.equal({ message: 'Invalid email or password'});
   });
+
   it('Verifica se token não é fornecido', async () => {
     const response = await chai.request(app).get('/role').set({
-      authorization: 'Authorization',
+      authorization: 'authorization',
       invalidToken :'1nv4l1d_t0k3n',
     });
 
@@ -101,7 +101,7 @@ describe('Verifica a rota /login', () => {
   })
   it('Verifica se o token é fornecido corretamente', async () => {
     const response = await chai.request(app).get('/role').set({
-      authorization: 'Authorization',
+      authorization: 'authorization',
       validToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInBhc3N3b3JkIjoic2VjcmV0X2FkbWluIiwiaWF0IjoxNjgwMDkzNTQ0fQ.xgv5Ti3AcN8oRtjoOp9SnIWAPrQapPa4Lamy81ri6Lk',
     });
     expect(response.status).to.be.equal(200);
