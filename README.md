@@ -43,3 +43,33 @@ It was created using the following tools:
 ---
 ## 💙 Routes - Endpoints
 
+### Getting all the registered teams
+``` http
+GET /teams
+```
+<details><summary>Sample:</summary></br>
+
+Successful case (status: 200):
+```json
+[
+  {
+    "id": 1,
+    "teamName": "Botafogo"
+  },
+  {
+    "id": 2,
+    "teamName": "Corinthians"
+  },
+  ...
+  {
+    "id": 6,
+    "teamName": "Ferroviária"
+  },
+  {
+    "id": 16,
+    "teamName": "São Paulo"
+  }
+]
+```
+</details>
+
