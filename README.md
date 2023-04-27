@@ -21,3 +21,5 @@ The Front-end was built by the teachers.
 
 :four: Docker:
 The docker compose command had the responsability to gather all the containers (Back-end, Front-end and Database) and take them up through the "npm run compose:up" command;
+
+</details>
