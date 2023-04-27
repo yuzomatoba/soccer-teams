@@ -124,5 +124,9 @@ Error case (status: 401):
 
 </details>
 
+### Login Response Type
+
+After the login, the created token was received by the "Authorization" in the header field.
+
 
 
