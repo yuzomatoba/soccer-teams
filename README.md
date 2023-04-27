@@ -1,10 +1,19 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# :ball: Soccer Team Project ! :ball:
+
+The Socccer Team Project target was focused on developing an API to the Front-end, which the score and the games were sent to the requester. Besides, additional games could be added if the user and the token were validated.
+
+The MSC Architecture was the tool to build it.
+
+<details><summary>Project Structure</summary></br>
+
+This project was structured in 4 parts:
+
+:one: Database:
+Database was responsible for obtaining the data to the Back-end.
+
+:two: Back-end:
+From the port 3001, The Back-end requested therequired data;
+The app was initialized from the following path: app/backend/src/server.ts;
+It was ensured that the express was executed and the app listened through the port the enviroment variables;
+
+:three: Front-end:
