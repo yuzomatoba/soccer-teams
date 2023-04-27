@@ -17,3 +17,7 @@ The app was initialized from the following path: app/backend/src/server.ts;
 It was ensured that the express was executed and the app listened through the port the enviroment variables;
 
 :three: Front-end:
+The Front-end was built by the teachers.
+
+:four: Docker:
+The docker compose command had the responsability to gather all the containers (Back-end, Front-end and Database) and take them up through the "npm run compose:up" command;
