@@ -28,4 +28,18 @@ The docker compose command had the responsability to gather all the containers (
 🛠️ Built by
 
 It was created using the following tools:
+- MSC Architecture (Model, Service, Controller);
+- Docker;
+- MySQL;
+- Express;
+- API Rest;
+- Sequelize ORM;
+- JWT (Jason Web Token);
+- Sinon;
+- Chai;
+- TypeScript;
+- Middlewares.
+
+---
+## 💙 Routes - Endpoints
 
