@@ -1,4 +1,4 @@
-# :ball: Soccer Team Project ! :ball:
+# ⚽: Soccer Team Project ! ⚽:
 
 The Socccer Team Project target was focused on developing an API to the Front-end, which the score and the games were sent to the requester. Besides, additional games could be added if the user and the token were validated.
 
@@ -23,3 +23,9 @@ The Front-end was built by the teachers.
 The docker compose command had the responsability to gather all the containers (Back-end, Front-end and Database) and take them up through the "npm run compose:up" command;
 
 </details>
+
+---
+🛠️ Built by
+
+It was created using the following tools:
+
