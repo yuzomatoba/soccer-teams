@@ -73,6 +73,21 @@ Successful case (status: 200):
 ```
 </details>
 
+### Getting the specific team by the ID
+``` http
+GET /teams/:id
+```
+<details><summary>Sample</summary></br>
+
+Successful case (status: 200):
+```json
+  {
+	"id": 6,
+	"teamName": "Ferroviária"
+  }
+```
+</details>
+
 ### Login Route
 
 To this requirement, the API received a validated email and a validated password. Also, both of them were registered in the database.
@@ -87,6 +102,27 @@ Sample:
 POST /login
 ```
 <details><summary>Sample</summary></br>
+
+Successful case (status: 200):
+```json
+{
+  "token": *created token here 
+}
+```
+Error case (status: 400):
+```json
+{
+  "message": "All fields must be filled"
+}
+```
+Error case (status: 401):
+```json
+{
+  "message": "Invalid email or password"
+}
+```
+
+</details>
 
 
 
