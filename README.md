@@ -128,5 +128,37 @@ Error case (status: 401):
 
 After the login, the created token was received by the "Authorization" in the header field.
 
+``` http
+GET /login/role
+```
+<details><summary>Sample</summary></br>
+
+Successful case (status: 200):
+```json
+{
+  "role": "admin"
+}
+```
+Error case (satus: 401):
+```json
+{
+ "message": "Token not found"
+}
+
+or
+
+{
+  "message": "Token must be a valid token"
+}
+```
+
+</details>
+
+### Getting all the games
+``` http
+GET /matches
+```
+<details><summary>Sample</summary></br>
+
 
 
