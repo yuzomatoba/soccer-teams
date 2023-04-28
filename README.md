@@ -91,7 +91,7 @@ Successful case (status: 200):
 ### Login Route
 
 To this requirement, the API received a validated email and a validated password. Also, both of them were registered in the database.
-Sample:
+Sample
 ```json
 {
   "email": "admin@admin.com",
