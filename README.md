@@ -549,7 +549,7 @@ npm start
 npm run dev
 ```
 
-PS: The container is configured to start in the development mode.
+PS: The container was configured to start in the development mode.
 
 ## :man_technologist: Built by Yuzo Matoba
 [Yuzo Matoba](https://www.linkedin.com/in/fabio-yuzo/)
