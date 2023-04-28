@@ -25,7 +25,7 @@ The docker compose command had the responsability to gather all the containers (
 </details>
 
 ---
-🛠️ Built using
+🛠️ Developed project using:
 
 It was created using the following tools:
 - MSC Architecture (Model, Service, Controller);
