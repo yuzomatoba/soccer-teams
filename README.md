@@ -211,7 +211,7 @@ Successful case (status: 200):
 
 </details>
 
-### Getting the game by the status
+### Getting the match by the status
 
 For ongoing matches:
 ``` http
