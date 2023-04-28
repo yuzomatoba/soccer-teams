@@ -1,6 +1,6 @@
 # ⚽ Soccer Team Project  ⚽
 
-The Socccer Team Project target was focused on developing an API to the Front-end, which the score and the games were sent to the requester. Besides, additional games could be added if the user and the token were validated.
+The Soccer Team Project target was focused on developing an API to the Front-end, which the score and the games were sent to the requester. Besides, additional games could be added if the user and the token were validated.
 
 The MSC Architecture was the tool to build it.
 
