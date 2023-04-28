@@ -12,7 +12,7 @@ This project was structured in 4 parts:
 Database was responsible for obtaining the data to the Back-end.
 
 :two: Back-end:
-From the port 3001, The Back-end requested therequired data;
+From the port 3001, the Back-end requested the required data;
 The app was initialized from the following path: app/backend/src/server.ts;
 It was ensured that the express was executed and the app listened through the port the enviroment variables;
 
